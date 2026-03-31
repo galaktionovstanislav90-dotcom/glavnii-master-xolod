@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главный мастер | Ремонт холодильников и стиральных машин Омск</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fc;
+            color: #1e293b;
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, #0f2b5c, #1e3a8a);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 32px;
+        }
+        .header p {
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        /* Навигация */
+        .nav {
+            background: #2563eb;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 12px;
+            flex-wrap: wrap;
+        }
+        .nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        .nav button:hover, .nav .active-nav {
+            background: #f59e0b;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        /* Блок телефонов */
+        .phone-block {
+            background: white;
+            padding: 25px;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .phone {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 10px 0;
+        }
+        .btn {
+            background: #f59e0b;
+            border: none;
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background: #d97706;
+            color: white;
+        }
+
+        /* Секции */
+        .section-title {
+            font-size: 28px;
+            text-align: center;
+            margin: 50px 0 25px;
+            color: #0f2b5c;
+            border-left: 5px solid #f59e0b;
+            padding-left: 15px;
+            display: inline-block;
+            width: auto;
+        }
+        .title-center {
+            text-align: center;
+            display: block;
+            border-left: none;
+        }
+
+        /* Карточки услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .service-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+        .price {
+            background: #fef3c7;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-top: 12px;
+            color: #b45309;
+        }
+
+        /* ГАЛЕРЕЯ ФОТО (РАБОТАЕТ И БЕЗ ВНЕШНИХ ССЫЛОК) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        /* Визуальное фото (цветной фон + эмодзи). Вы легко замените на реальные картинки */
+        .photo-preview {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #d9e2ef, #b9c8e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            color: #1e3a8a;
+        }
+        .photo-title {
+            font-weight: bold;
+            padding: 15px 15px 5px;
+            font-size: 18px;
+        }
+        .photo-desc {
+            padding: 0 15px 15px;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        /* Отзывы */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .review {
+            background: white;
+            padding: 20px;
+            border-radius: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .review-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+        .review-text {
+            color: #334155;
+            line-height: 1.4;
+        }
+
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .brand {
+            background: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Таблица цен */
+        .price-table {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Контакты */
+        .contact-card {
+            background: white;
+            border-radius: 28px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 18px;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .hidden-page {
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+            .phone { font-size: 20px; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🔧 Главный мастер</h1>
+    <p>Ремонт холодильников и стиральных машин в Омске</p>
+</div>
+
+<div class="nav">
+    <button id="btnHome" class="active-nav">🏠 Главная</button>
+    <button id="btnServices">💰 Услуги и цены</button>
+    <button id="btnContacts">📞 Контакты</button>
+</div>
+
+<!-- ГЛАВНАЯ СТРАНИЦА -->
+<div id="homePage">
+    <div class="container">
+        <div class="phone-block">
+            <div class="phone">📞 8-933-440-89-69</div>
+            <div class="phone">📞 8-913-640-89-69</div>
+            <button class="btn" id="callMasterBtn">🚀 Вызвать мастера</button>
+        </div>
+
+        <h2 class="section-title title-center">🛠️ Мы ремонтируем</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-icon">❄️</div><h3>Холодильники</h3><p>Любые бренды: LG, Samsung, Bosch</p><div class="price">от 1500 ₽</div></div>
+            <div class="service-card"><div class="service-icon">🧺</div><h3>Стиральные машины</h3><p>Замена ТЭНа, подшипников, насоса</p><div class="price">от 1500 ₽</div></div>
+            <div class="service-card"><div class="service-icon">🔧</div><h3>Выезд мастера</h3><p>Диагностика бесплатно при ремонте</p><div class="price">выезд 0 ₽*</div></div>
+        </div>
+
+        <h2 class="section-title title-center">📸 Фото наших работ</h2>
+        <div class="gallery" id="galleryContainer"></div>
+
+        <h2 class="section-title title-center">⭐ Отзывы клиентов</h2>
+        <div class="reviews-grid" id="reviewsContainer"></div>
+
+        <h2 class="section-title title-center">🏆 Бренды, которые ремонтируем</h2>
+        <div class="brands">
+            <span class="brand">LG</span><span class="brand">Samsung</span><span class="brand">Bosch</span>
+            <span class="brand">Indesit</span><span class="brand">Atlant</span><span class="brand">Beko</span>
+            <span class="brand">Haier</span><span class="brand">Whirlpool</span><span class="brand">Zanussi</span>
+        </div>
+
+        <div style="background: #eef2ff; padding: 30px; border-radius: 28px; text-align: center; margin: 40px 0;">
+            <h3>📝 Заявка на бесплатную диагностику</h3>
+            <p>Мы перезвоним и согласуем выезд мастера</p>
+            <input type="text" id="nameReq" placeholder="Ваше имя" style="padding: 12px; margin: 8px; border-radius: 60px; border: 1px solid #ccc; width: 240px;">
+            <input type="tel" id="phoneReq" placeholder="Телефон" style="padding: 12px; margin: 8px; border-radius: 60px; border: 1px solid #ccc; width: 240px;">
+            <button class="btn" id="sendReqBtn">Отправить</button>
+            <p style="font-size: 12px; margin-top: 12px;">*Диагностика бесплатна при выполнении ремонта</p>
+        </div>
+    </div>
+</div>
+
+<!-- СТРАНИЦА УСЛУГ И ЦЕН -->
+<div id="servicesPage" class="hidden-page">
+    <div class="container">
+        <h2 class="section-title title-center">💰 Прайс-лист</h2>
+        <div class="price-table">
+            <div class="price-row"><span>🔍 Диагностика (выезд мастера)</span><span><strong>Бесплатно*</strong></span></div>
+            <div class="price-row"><span>❄️ Ремонт холодильника (замена компрессора)</span><span>от 3500 ₽</span></div>
+            <div class="price-row"><span>🔥 Замена ТЭНа в стиральной машине</span><span>от 2200 ₽</span></div>
+            <div class="price-row"><span>🎛️ Ремонт модуля управления (холодильник)</span><span>от 2800 ₽</span></div>
+            <div class="price-row"><span>🔄 Замена подшипников стиральной машины</span><span>от 3900 ₽</span></div>
+            <div class="price-row"><span>💨 Заправка холодильника фреоном</span><span>от 2500 ₽</span></div>
+            <div class="price-row"><span>🚰 Ремонт сливной системы / насоса</span><span>от 1800 ₽</span></div>
+            <div class="price-row"><span>🚪 Замена уплотнителя двери</span><span>от 1900 ₽</span></div>
+        </div>
+        <p style="text-align: center;">*Бесплатная диагностика при условии выполнения ремонта</p>
+        
+        <div style="background: #fef3c7; padding: 30px; border-radius: 28px; text-align: center; margin: 40px 0;">
+            <h3>🎁 Скидка 10% на первый ремонт</h3>
+            <input type="text" id="saleName" placeholder="Имя" style="padding: 12px; margin: 8px; border-radius: 60px; border: 1px solid #ccc;">
+            <input type="tel" id="salePhone" placeholder="Телефон" style="padding: 12px; margin: 8px; border-radius: 60px; border: 1px solid #ccc;">
+            <button class="btn" id="saleBtn">Получить скидку</button>
+        </div>
+    </div>
+</div>
+
+<!-- СТРАНИЦА КОНТАКТОВ -->
+<div id="contactsPage" class="hidden-page">
+    <div class="container">
+        <h2 class="section-title title-center">📞 Контакты</h2>
+        <div class="contact-card">
+            <div class="contact-line">📍 <strong>Адрес:</strong> г. Омск, пр. Мира, 84</div>
+            <div class="contact-line">📞 <strong>Телефоны:</strong> 8 (933) 440-89-69 &nbsp;|&nbsp; 8 (913) 640-89-69</div>
+            <div class="contact-line">⏰ <strong>Режим работы:</strong> ежедневно 9:00 – 21:00</div>
+            <div class="contact-line">🚌 <strong>Остановка:</strong> «Садко» (2 минуты пешком)</div>
+            <div class="contact-line">🚗 <strong>Как проехать:</strong> автобусы 3, 12, 33 до ост. «Садко». Вход со двора.</div>
+            <div class="contact-line">📱 <strong>ВКонтакте:</strong> vk.com/glavny_master_omsk</div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="window.location.href='tel:+79334408969'">📞 Позвонить сейчас</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Главный мастер, Омск | пр. Мира, 84 | 8-933-440-89-69</p>
+    <p>Ремонт холодильников и стиральных машин с гарантией</p>
+</footer>
+
+<script>
+    // === ФОТОГРАФИИ (РАБОТАЮТ СРАЗУ, БЕЗ ВНЕШНИХ КАРТИНОК) ===
+    // Вы можете ЗАМЕНИТЬ эмодзи и градиент на реальные фото: просто добавьте поле "img: 'ваша_ссылка.jpg'"
+    const photosList = [
+        { emoji: "❄️", title: "Замена компрессора LG", desc: "Холодильник LG, замена компрессора, заправка фреоном" },
+        { emoji: "🧺", title: "Ремонт стиральной машины Samsung", desc: "Замена ТЭНа и подшипников" },
+        { emoji: "🔧", title: "Диагностика Bosch", desc: "Замена модуля управления" },
+        { emoji: "⚙️", title: "Indesit: сливная система", desc: "Замена насоса и патрубков" },
+        { emoji: "🧊", title: "Холодильник Atlant", desc: "Устранение утечки фреона" },
+        { emoji: "🚿", title: "Стиральная машина Beko", desc: "Замена амортизаторов и ремня" }
+    ];
+
+    // Отзывы
+    const reviewsArray = [
+        { name: "Екатерина С.", stars: 5, text: "Отличный сервис! Мастер приехал через час, быстро починил стиральную машину. Цена адекватная, дали гарантию." },
+        { name: "Андрей В.", stars: 5, text: "Ремонтировал холодильник Samsung. Всё сделали качественно, даже пылесосили после себя. Рекомендую!" },
+        { name: "Ольга К.", stars: 5, text: "Поломка стиралки — не крутился барабан. Заменили подшипники за день, цена устроила. Вежливые мастера." },
+        { name: "Дмитрий П.", stars: 4, text: "Хорошо починили холодильник, быстро нашли неисправность. Приехали вовремя. Спасибо!" },
+        { name: "Ирина М.", stars: 5, text: "Очень довольна! Диагностика бесплатно, быстро заменили нагреватель. Буду рекомендовать друзьям." }
+    ];
+
+    // Отрисовка галереи (сразу видны иконки + стиль)
+    function renderGallery() {
+        const galleryDiv = document.getElementById('galleryContainer');
+        if (!galleryDiv) return;
+        galleryDiv.innerHTML = '';
+        photosList.forEach(photo => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            card.innerHTML = `
+                <div class="photo-preview">${photo.emoji}</div>
+                <div class="photo-title">${photo.title}</div>
+                <div class="photo-desc">${photo.desc}</div>
+            `;
+            galleryDiv.appendChild(card);
+        });
+    }
+
+    function renderReviews() {
+        const revDiv = document.getElementById('reviewsContainer');
+        if (!revDiv) return;
+        revDiv.innerHTML = '';
+        reviewsArray.forEach(r => {
+            const starsHtml = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+            revDiv.innerHTML += `
+                <div class="review">
+                    <div class="review-name">${r.name}</div>
+                    <div class="stars">${starsHtml}</div>
+                    <div class="review-text">“${r.text}”</div>
+                </div>
+            `;
+        });
+    }
+
+    // Переключение страниц
+    const homeDiv = document.getElementById('homePage');
+    const servicesDiv = document.getElementById('servicesPage');
+    const contactsDiv = document.getElementById('contactsPage');
+    const btnHome = document.getElementById('btnHome');
+    const btnServices = document.getElementById('btnServices');
+    const btnContacts = document.getElementById('btnContacts');
+
+    function showHome() {
+        homeDiv.classList.remove('hidden-page');
+        servicesDiv.classList.add('hidden-page');
+        contactsDiv.classList.add('hidden-page');
+        btnHome.classList.add('active-nav');
+        btnServices.classList.remove('active-nav');
+        btnContacts.classList.remove('active-nav');
+        renderGallery();  // при переходе на главную подгружаем фото и отзывы
+        renderReviews();
+    }
+    function showServices() {
+        homeDiv.classList.add('hidden-page');
+        servicesDiv.classList.remove('hidden-page');
+        contactsDiv.classList.add('hidden-page');
+        btnHome.classList.remove('active-nav');
+        btnServices.classList.add('active-nav');
+        btnContacts.classList.remove('active-nav');
+    }
+    function showContacts() {
+        homeDiv.classList.add('hidden-page');
+        servicesDiv.classList.add('hidden-page');
+        contactsDiv.classList.remove('hidden-page');
+        btnHome.classList.remove('active-nav');
+        btnServices.classList.remove('active-nav');
+        btnContacts.classList.add('active-nav');
+    }
+
+    btnHome.addEventListener('click', showHome);
+    btnServices.addEventListener('click', showServices);
+    btnContacts.addEventListener('click', showContacts);
+
+    // Формы
+    document.getElementById('sendReqBtn')?.addEventListener('click', () => {
+        let phone = document.getElementById('phoneReq')?.value;
+        if (!phone) { alert("Введите номер телефона"); return; }
+        alert(`Спасибо! Мастер перезвонит на номер ${phone}`);
+        document.getElementById('nameReq').value = '';
+        document.getElementById('phoneReq').value = '';
+    });
+    document.getElementById('saleBtn')?.addEventListener('click', () => {
+        let phone = document.getElementById('salePhone')?.value;
+        if (!phone) { alert("Введите телефон для скидки"); return; }
+        alert(`Скидка 10% закреплена! Свяжемся с вами (${phone})`);
+        document.getElementById('saleName').value = '';
+        document.getElementById('salePhone').value = '';
+    });
+    document.getElementById('callMasterBtn')?.addEventListener('click', () => {
+        alert("Оставьте заявку в форме ниже, и мастер приедет в удобное время");
+        document.querySelector('.phone-block')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Инициализация
+    renderGallery();
+    renderReviews();
+    showHome();
+</script>
+</body>
+</html>
